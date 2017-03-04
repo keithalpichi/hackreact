@@ -24,10 +24,11 @@ class App extends Component {
       noteId: v4(),
       desc: text
     }
-    const newNotes = this.state.notes
-    newNotes.push(newNote)
     this.setState({
-      notes: newNotes
+      notes: [
+        ...this.state.notes,
+        newNote
+      ]
     })
   }
 
