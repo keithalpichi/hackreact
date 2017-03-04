@@ -4,9 +4,11 @@ import React, { Component } from 'react';
 class NoteMenu extends Component {
   constructor(props) {
     super(props)
+    this.add = this.add.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
-  add(e) {
+  add() {
   	const newVal = this.refs.newNoteText.value;
     if (newVal) {
   		this.props.addNote(newVal);
@@ -23,9 +25,9 @@ class NoteMenu extends Component {
   render() {
     return (
       <div id="note-menu" className="input-group">
-        <input type="text" className="form-control" placeholder="Hack away!" ref="newNoteText" onKeyPress={this.handleKeyPress.bind(this)}/>
+        <input type="text" className="form-control" placeholder="Hack away!" ref="newNoteText" onKeyPress={this.handleKeyPress}/>
         <span className="input-group-btn">
-          <button className="btn btn-default btn-success" type="button" onClick={this.add.bind(this)}>+</button>
+          <button className="btn btn-default btn-success" type="button" onClick={this.add}>+</button>
         </span>
       </div>
     )
