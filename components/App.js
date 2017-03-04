@@ -7,13 +7,12 @@ import NoteList from './NoteList'
 class App extends Component {
   constructor(props) {
     super(props)
-    // Add initial state with key of notes and value of empty array
     this.state = {
       notes: []
     }
-
-    // You'll have to bind functions here or before passing them down as props
-
+    this.addNote = this.addNote.bind(this)
+    this.deleteNote = this.deleteNote.bind(this)
+    this.updateNote = this.updateNote.bind(this)
   }
 
   addNote(text) {
@@ -21,6 +20,16 @@ class App extends Component {
     // `noteId` using `v4` method above
     // `desc` as a string
     console.log('Adding new note with text: ' + text);
+    const newNote = {
+      noteId: v4(),
+      desc: text
+    }
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        newNote
+      ]
+    })
   }
 
   deleteNote(id) {
@@ -37,8 +46,8 @@ class App extends Component {
     return (
       <div>
         <h1>HackReact</h1>
-        <div>Place NoteMenu component on this line</div>
-        <div>Place NoteList component on this line</div>
+        <NoteMenu addNote={this.addNote}/>
+        <NoteList notes={this.state.notes}/>
       </div>
     )
   }

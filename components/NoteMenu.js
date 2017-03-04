@@ -4,23 +4,29 @@ import React, { Component } from 'react';
 class NoteMenu extends Component {
   constructor(props) {
     super(props)
+    this.add = this.add.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   add() {
     // Add new note
     // How will you get the note description from here? HINT: `refs`
+    const text = this.refs.newNoteText.value
+    this.props.addNote(text)
+    this.refs.newNoteText.value = ''
   }
 
   handleKeyPress(e) {
     // Only call `add` if the keypress is the `Enter` button
+    if (e.which === 13) this.add()
   }
 
   render() {
     return (
       <div id="note-menu" className="input-group">
-        <input type="text" className="form-control" placeholder="Hack away!" ref="newNoteText" onKeyPress={this.handleKeyPress.bind(this)}/>
+        <input type="text" className="form-control" placeholder="Hack away!" ref="newNoteText" onKeyPress={this.handleKeyPress}/>
         <span className="input-group-btn">
-          <button className="btn btn-default btn-success" type="button" onClick={this.add.bind(this)}>+</button>
+          <button className="btn btn-default btn-success" type="button" onClick={this.add}>+</button>
         </span>
       </div>
     )
