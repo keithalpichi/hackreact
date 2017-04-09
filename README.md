@@ -2,6 +2,8 @@
 
 A workshop demo-ing HackReact- a to-do list app for Hackreactor students. Presented on March 2nd, 2017 by [Keith Alpichi](https://www.linkedin.com/in/keithalpichi/)
 
+> See the `solution` branch for the complete application
+
 ## Prerequisites
 - React syntax
 - ES6
